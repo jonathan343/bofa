@@ -1,6 +1,6 @@
 [project]
 name = "bofa"
-version = "0.0.1"
+version = "0.0.2"
 description = "Have you heard of bofa?"
 readme = "README.md"
 authors = [
