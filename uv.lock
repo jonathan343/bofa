@@ -6,3 +6,18 @@ requires-python = ">=3.10"
 name = "bofa"
 version = "0.0.2"
 source = { editable = "." }
+dependencies = [
+    { name = "terminaltexteffects" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "terminaltexteffects", specifier = ">=0.14.2" }]
+
+[[package]]
+name = "terminaltexteffects"
+version = "0.14.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/16/d2/9293a967c80172bc56b342e51cf5354bfdf0bf2b4b9df0b25f91c9c7c439/terminaltexteffects-0.14.2.tar.gz", hash = "sha256:213c899ce4b8f7643d2d0568af144e1274e11e4493db9f5b04387bd17c217714", size = 237775, upload-time = "2025-11-29T05:55:06.624Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0e/a0/46d892dbd2e4a7783da50a99d2897e56dbc4a5cd8a441b474da716b635fb/terminaltexteffects-0.14.2-py3-none-any.whl", hash = "sha256:868a3f1c84bf011d96df7a771f729360f81bda724342410ff1e54517174e2583", size = 207320, upload-time = "2025-11-29T05:55:05.426Z" },
+]

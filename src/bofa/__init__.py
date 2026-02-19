@@ -29,15 +29,11 @@ from terminaltexteffects.engine.base_effect import BaseEffect
 from terminaltexteffects.engine.terminal import TerminalConfig
 from terminaltexteffects.utils.argutils import CharacterGroup
 
-BOFA = b'\x42\x6f\x66\x61\x20\x64\x65\x65\x7a\x20\x6e\x75\x74\x73'
-CELEBRATE = b'\x42\x4f\x46\x41\x20\x44\x45\x45\x5a\x20\x4e\x55\x54\x53\x21\x21\x21'
+BOFA = b"\x42\x6f\x66\x61\x20\x64\x65\x65\x7a\x20\x6e\x75\x74\x73"
+CELEBRATE = b"\x42\x4f\x46\x41\x20\x44\x45\x45\x5a\x20\x4e\x55\x54\x53\x21\x21\x21"
 PREFIX = BOFA[:4]
 ASCII_CONFETTI_CHARS: Final[str] = "*+x~^@"
-UNICODE_CONFETTI_CHARS: Final[str] = (
-    "✦✧❖✺✹✷✸✶✱✲✳✴✵✼✽"
-    "❇❈❉❊"
-    + ASCII_CONFETTI_CHARS
-)
+UNICODE_CONFETTI_CHARS: Final[str] = "✦✧❖✺✹✷✸✶✱✲✳✴✵✼✽❇❈❉❊" + ASCII_CONFETTI_CHARS
 RAINBOW_STOPS: Final[tuple[Color, ...]] = (
     Color("#e81416"),
     Color("#ffa500"),
@@ -67,7 +63,7 @@ def _confetti_border(width: int, rng: random.Random, unicode_ok: bool) -> str:
 
 def _make_intro_text(width: int, rng: random.Random, unicode_ok: bool) -> str:
     border = _confetti_border(width, rng, unicode_ok)
-    prefix = PREFIX.decode('utf-8')
+    prefix = PREFIX.decode("utf-8")
     question = f"HAVE YOU HEARD OF {prefix}?"
     if unicode_ok and width >= len(question) + 4:
         question = f"✦ {question} ✦"
@@ -86,7 +82,7 @@ def _make_punchline_text(
     unicode_ok: bool,
 ) -> str:
     border = _confetti_border(width, rng, unicode_ok)
-    punchline = CELEBRATE.decode('utf-8')
+    punchline = CELEBRATE.decode("utf-8")
 
     if unicode_ok and width >= len(punchline) + 4:
         punchline = f"❇ {punchline} ❇"
@@ -120,7 +116,7 @@ def _play(effect: BaseEffect, rng: random.Random) -> None:
 
 def main() -> None:
     if not sys.stdout.isatty() or os.environ.get("TERM", "").lower() == "dumb":
-        msg = BOFA.decode('utf-8')
+        msg = BOFA.decode("utf-8")
         print(msg)
         return
 
@@ -224,7 +220,7 @@ def _play_interlude(
     unicode_ok: bool,
 ) -> None:
     border = _confetti_border(width, rng, unicode_ok)
-    prefix = PREFIX.decode('utf-8')
+    prefix = PREFIX.decode("utf-8")
     line_1 = f"...{prefix} {prefix} {prefix}..."
     if unicode_ok and width >= len(line_1) + 4:
         line_1 = f"✧ {line_1} ✧"
