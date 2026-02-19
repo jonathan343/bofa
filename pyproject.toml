@@ -7,7 +7,9 @@ authors = [
     { name = "jonathan343", email = "jonathangee09@gmail.com" }
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "terminaltexteffects>=0.14.2",
+]
 
 [project.scripts]
 bofa = "bofa:main"
