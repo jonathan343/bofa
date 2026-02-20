@@ -115,8 +115,8 @@ def _play(effect: BaseEffect, rng: random.Random) -> None:
 
 
 def main() -> None:
+    msg = BOFA.decode("utf-8")
     if not sys.stdout.isatty() or os.environ.get("TERM", "").lower() == "dumb":
-        msg = BOFA.decode("utf-8")
         print(msg)
         return
 
@@ -141,6 +141,7 @@ def main() -> None:
                 unicode_ok=unicode_ok,
             )
     except KeyboardInterrupt:
+        print(msg)
         return
 
     fireworks_config = FireworksConfig._build_config()
@@ -171,8 +172,8 @@ def main() -> None:
             terminal_config=terminal_config,
         )
     except KeyboardInterrupt:
+        print(msg)
         return
-
 
 def _play_intro(
     *,
