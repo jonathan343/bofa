@@ -115,8 +115,8 @@ def _play(effect: BaseEffect, rng: random.Random) -> None:
 
 
 def main() -> None:
+    msg = BOFA.decode("utf-8")
     if not sys.stdout.isatty() or os.environ.get("TERM", "").lower() == "dumb":
-        msg = BOFA.decode("utf-8")
         print(msg)
         return
 
@@ -125,20 +125,24 @@ def main() -> None:
     width = _pick_width()
     terminal_config = _build_terminal_config()
 
-    _play_intro(
-        width=width,
-        rng=rng,
-        terminal_config=terminal_config,
-        unicode_ok=unicode_ok,
-    )
-
-    if rng.random() < 0.75:
-        _play_interlude(
+    try:
+        _play_intro(
             width=width,
             rng=rng,
             terminal_config=terminal_config,
             unicode_ok=unicode_ok,
         )
+
+        if rng.random() < 0.75:
+            _play_interlude(
+                width=width,
+                rng=rng,
+                terminal_config=terminal_config,
+                unicode_ok=unicode_ok,
+            )
+    except KeyboardInterrupt:
+        print(msg)
+        return
 
     fireworks_config = FireworksConfig._build_config()
     fireworks_config.explode_anywhere = True
@@ -168,8 +172,8 @@ def main() -> None:
             terminal_config=terminal_config,
         )
     except KeyboardInterrupt:
+        print(msg)
         return
-
 
 def _play_intro(
     *,
