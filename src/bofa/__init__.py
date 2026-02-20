@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import os
 import random
 import shutil
@@ -115,9 +116,18 @@ def _play(effect: BaseEffect, rng: random.Random) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--moon", action="store_true")
+    args = parser.parse_args()
+
     msg = BOFA.decode("utf-8")
     if not sys.stdout.isatty() or os.environ.get("TERM", "").lower() == "dumb":
         print(msg)
+        return
+
+    if args.moon:
+        from bofa.moon import play_moon
+        play_moon()
         return
 
     rng = random.Random()
